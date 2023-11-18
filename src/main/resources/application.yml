@@ -15,5 +15,5 @@ spring:
         format_sql: true
         use_sql_comments: true
         hbm2ddl:
-          auto: update
+          auto: update # create는 기존 테이블을 모두 없애버리고 새로 만들게 되니, 무조건!!!!! update로 설정하기
         default_batch_fetch_size: 1000
