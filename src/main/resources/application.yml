@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/umc5th?useSSL=false&serverTimezone=Asia/Seoul
+    username: sumin
+    password: 9030
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: never
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        hbm2ddl:
+          auto: update # create는 기존 테이블을 모두 없애버리고 새로 만들게 되니, 무조건!!!!! update로 설정하기
+        default_batch_fetch_size: 1000
