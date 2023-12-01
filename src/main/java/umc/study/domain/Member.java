@@ -50,7 +50,9 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50)
+    // 이메일을 소셜 로그인에서 처리한 후 나머지 정보를 기입 받는 것이 맞는 순서 이나,
+    // 소셜 로그인 없이 하는 중이라 주석 처리
+    // @Column(nullable = false, length = 50)
     private String email;
 
     private Integer point;
