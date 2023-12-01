@@ -12,7 +12,7 @@ public class ReviewRequestDTO {
         @NotNull
         Long storeId;
         @NotNull
-        Long score;
+        Float score;
         @NotNull
         String text;
     }
