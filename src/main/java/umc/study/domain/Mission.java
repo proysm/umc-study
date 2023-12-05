@@ -9,6 +9,7 @@ import umc.study.domain.mapping.MemberPrefer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Mission extends BaseEntity {
 
     private Integer reward;
 
-    private LocalDate deadline;
+    private Date deadline;
 
     private String missionSpec;
 

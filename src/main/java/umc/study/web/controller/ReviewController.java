@@ -3,6 +3,7 @@ package umc.study.web.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ public class ReviewController {
 
     private final ReviewCommandService reviewCommandService;
 
+    @PostMapping("/write")
     public ApiResponse<ReviewResponseDTO.ReviewResultDTO> write(@RequestBody @Valid ReviewRequestDTO.ReviewDto request){
         Review review = reviewCommandService.writeReview(request);
         return ApiResponse.onSuccess(ReviewConverter.toReviewResultDTO(review));

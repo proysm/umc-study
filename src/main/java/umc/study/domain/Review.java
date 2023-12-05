@@ -22,6 +22,8 @@ public class Review {
 
     private Float score;
 
+    private String body;
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;

@@ -7,7 +7,7 @@ import lombok.Getter;
 public class StoreRequestDTO {
 
     @Getter
-    public static class StoreDto{
+    public static class JoinDto{
         @NotNull
         Long regionId;
         @NotBlank

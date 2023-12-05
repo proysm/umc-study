@@ -17,7 +17,7 @@ public class StoreConverter {
                 .build();
     }
 
-    public static Store toStore(StoreRequestDTO.StoreDto store){
+    public static Store toStore(StoreRequestDTO.JoinDto store){
         return Store.builder()
                 .name(store.getName())
                 .score(store.getScore())

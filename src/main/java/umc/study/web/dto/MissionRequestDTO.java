@@ -1,19 +1,18 @@
 package umc.study.web.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 import java.util.Date;
 
-public class MisssionRequestDTO {
+public class MissionRequestDTO {
 
     @Getter
-    public static class MiisionDto{
+    public static class writeDto{
         @NotNull
         Long storeId;
         @NotNull
-        Long reward;
+        Integer reward;
         @NotNull
         Date deadline;
         @NotNull
