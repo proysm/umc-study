@@ -7,7 +7,9 @@ import umc.study.web.dto.ReviewResponseDTO;
 import umc.study.web.dto.StoreRequestDTO;
 import umc.study.web.dto.StoreResponseDTO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StoreConverter {
 
@@ -24,4 +26,5 @@ public class StoreConverter {
                 .address(store.getAddress())
                 .build();
     }
+
 }
