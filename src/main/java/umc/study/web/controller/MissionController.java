@@ -17,6 +17,7 @@ import umc.study.domain.Member;
 import umc.study.domain.Mission;
 import umc.study.domain.Review;
 import umc.study.domain.mapping.MemberMission;
+import umc.study.service.member_mission.MemberMissionService;
 import umc.study.service.mission.MissionCommandService;
 import umc.study.validation.annotation.CheckPage;
 import umc.study.web.dto.*;
@@ -31,6 +32,7 @@ import java.util.stream.Collectors;
 public class MissionController {
 
     private final MissionCommandService missionCommandService;
+    private final MemberMissionService memberMissionService;
 
     @PostMapping("/write")
     public ApiResponse<MissionResponseDTO.MissionResultDTO> write(@RequestBody @Valid MissionRequestDTO.writeDto request){
@@ -68,5 +70,29 @@ public class MissionController {
         return ApiResponse.onSuccess(data);
     }
 
+
+    @GetMapping("/list2/{memberId}/{pageId}")
+    public ApiResponse<?> getUserActiveMissionList(@PathVariable(name = "memberId") Long memberId, @CheckPage @PathVariable(name = "pageId") Long pageId){
+
+        // 유효성 검사 실패 시, ExceptionAdvice 클래스에 의해 자동으로 처리됨.
+
+        Pageable pageable = PageRequest.of((int) (pageId - 1), 2); // 페이지 크기: 2
+        Page<Mission> missionsPage = memberMissionService.findActiveMission(memberId, pageable);
+
+        List<MissionResponseDTO.MissionResultDTO> missionDtos = missionsPage.getContent().stream()
+                .map(MissionConverter::toMissionResultDTO)
+                .collect(Collectors.toList());
+
+        MissionRequestDTO.MissionPreViewListDTO data = MissionRequestDTO.MissionPreViewListDTO.builder()
+                .missionList(missionDtos)
+                .listSize(missionDtos.size())
+                .totalPage(missionsPage.getTotalPages())
+                .totalElements(missionsPage.getTotalElements())
+                .isFirst(missionsPage.isFirst())
+                .isLast(missionsPage.isLast())
+                .build();
+
+        return ApiResponse.onSuccess(data);
+    }
 
 }

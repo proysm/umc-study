@@ -69,8 +69,11 @@ INSERT INTO Store (name, address, score, region_id) VALUES ('Store B', '2000 B A
 INSERT INTO Store (name, address, score, region_id) VALUES ('Store C', '2000 C Ave', 4.0, 1);
 
 INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (50, '2023-12-31', 'Complete 5 deliveries', 1);
+INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (50, '2023-12-31', 'Complete 5 deliveries', 1);
 INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (100, '2024-01-15', 'Rate 10 products', 2);
+INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (50, '2023-12-31', 'Complete 5 deliveries', 2);
 INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (30, '2024-02-01', 'Refer 3 friends', 3);
+INSERT INTO Mission (reward, deadline, mission_spec, store_id) VALUES (50, '2023-12-31', 'Complete 5 deliveries', 3);
 
 
 INSERT INTO Review (title, score, body, member_id, store_id) VALUES ('Great service', 4.5, 'Loved the quick delivery', 1, 1);
@@ -89,3 +92,10 @@ INSERT INTO Review (title, score, body, member_id, store_id) VALUES ('Average ex
 INSERT INTO Review (title, score, body, member_id, store_id) VALUES ('Average experience', 3.0, 'Decent but not exceptional', 3, 3);
 INSERT INTO Review (title, score, body, member_id, store_id) VALUES ('Average experience', 3.0, 'Decent but not exceptional', 3, 3);
 INSERT INTO Review (title, score, body, member_id, store_id) VALUES ('Average experience', 3.0, 'Decent but not exceptional', 3, 3);
+
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('COMPLETE', 1, 1);
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('CHALLENGING', 2, 1);
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('COMPLETE', 1, 2);
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('CHALLENGING', 3, 2);
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('COMPLETE', 2, 3);
+INSERT INTO Member_Mission (status, member_id, mission_id) VALUES ('CHALLENGING', 3, 3);
