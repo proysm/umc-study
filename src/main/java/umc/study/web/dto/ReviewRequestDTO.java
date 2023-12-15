@@ -20,4 +20,10 @@ public class ReviewRequestDTO {
         @NotNull
         String title;
     }
+
+    @Getter
+    public static class MemberReivew{
+        Long pageId;
+        Long userId;
+    }
 }

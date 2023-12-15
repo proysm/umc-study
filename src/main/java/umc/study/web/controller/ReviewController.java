@@ -7,17 +7,26 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc.study.apiPayload.ApiResponse;
+import umc.study.apiPayload.code.status.ErrorStatus;
 import umc.study.converter.ReviewConverter;
 import umc.study.domain.Review;
 import umc.study.service.review.ReviewCommandService;
+import umc.study.validation.annotation.CheckPage;
 import umc.study.validation.annotation.ExistStore;
 import umc.study.web.dto.ReviewRequestDTO;
 import umc.study.web.dto.ReviewResponseDTO;
 import umc.study.web.dto.StoreRequestDTO;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -48,4 +57,27 @@ public class ReviewController {
         return null;
     }
 
+    @GetMapping("/list/{memberId}/{pageId}")
+    public ApiResponse<?> getUserReviewList(@PathVariable(name = "memberId") Long memberId, @CheckPage @PathVariable(name = "pageId") Long pageId){
+
+        // 유효성 검사 실패 시, ExceptionAdvice 클래스에 의해 자동으로 처리됨.
+
+        Pageable pageable = PageRequest.of((int) (pageId - 1), 10); // 예시 페이지 크기: 10
+        Page<Review> reviewsPage = reviewCommandService.findMemberReview(memberId, pageable);
+
+        List<ReviewResponseDTO.ReviewResultDTO> reviewDtos = reviewsPage.getContent().stream()
+                .map(ReviewConverter::toReviewResultDTO)
+                .collect(Collectors.toList());
+
+        StoreRequestDTO.ReviewPreViewListDTO data = StoreRequestDTO.ReviewPreViewListDTO.builder()
+                .reviewList(reviewDtos)
+                .listSize(reviewDtos.size())
+                .totalPage(reviewsPage.getTotalPages())
+                .totalElements(reviewsPage.getTotalElements())
+                .isFirst(reviewsPage.isFirst())
+                .isLast(reviewsPage.isLast())
+                .build();
+
+        return ApiResponse.onSuccess(data);
+    }
 }

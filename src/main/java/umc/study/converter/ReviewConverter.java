@@ -9,6 +9,7 @@ import umc.study.web.dto.StoreResponseDTO;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReviewConverter {
 
@@ -24,6 +25,5 @@ public class ReviewConverter {
                 .reviewImageList(new ArrayList<>())
                 .build();
     }
-
 
 }
