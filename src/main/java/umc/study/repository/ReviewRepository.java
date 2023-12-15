@@ -13,7 +13,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<Review> findAllByStore(Store store, PageRequest pageRequest);
 
     // 사용자 ID와 페이지 정보를 기반으로 리뷰를 조회
-    Page<Review> findAllByMemberId(Long memberId, Pageable pageable);
+    Page<Review> findAllByStoreId(Long memberId, Pageable pageable);
 
 
 }

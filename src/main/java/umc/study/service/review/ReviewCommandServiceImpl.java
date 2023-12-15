@@ -29,8 +29,8 @@ public class ReviewCommandServiceImpl implements ReviewCommandService{
     } // 가게에 리뷰 추가하기
 
     @Override
-    public Page<Review> findMemberReview(Long memberId, Pageable pageable) {
+    public Page<Review> findMemberReview(Long storeId, Pageable pageable) {
 
-        return reviewRepository.findAllByMemberId(memberId, pageable);
+        return reviewRepository.findAllByStoreId(storeId, pageable);
     } // 가게에 리뷰 추가하기
 }
