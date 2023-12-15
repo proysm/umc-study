@@ -1,6 +1,8 @@
 package umc.study.service.mission;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.study.converter.MemberMissionConverter;
@@ -44,5 +46,12 @@ public class MissionCommandServiceImpl implements MissionCommandService{
         MemberMission newMemberMission = MemberMissionConverter.toMemberMission(member.get(), mission.get());
         return memberMissionRepository.save(newMemberMission);
     }
+
+    @Override
+    public Page<Mission> findStoreMission(Long missionId, Pageable pageable){
+
+        return missionRepository.findAllByStoreId(missionId, pageable);
+
+    } // 해당 가게의 미션 조회
 
 }

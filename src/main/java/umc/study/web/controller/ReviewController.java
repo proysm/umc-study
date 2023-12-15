@@ -62,7 +62,7 @@ public class ReviewController {
 
         // 유효성 검사 실패 시, ExceptionAdvice 클래스에 의해 자동으로 처리됨.
 
-        Pageable pageable = PageRequest.of((int) (pageId - 1), 10); // 예시 페이지 크기: 10
+        Pageable pageable = PageRequest.of((int) (pageId - 1), 2); // 페이지 크기: 2
         Page<Review> reviewsPage = reviewCommandService.findMemberReview(memberId, pageable);
 
         List<ReviewResponseDTO.ReviewResultDTO> reviewDtos = reviewsPage.getContent().stream()

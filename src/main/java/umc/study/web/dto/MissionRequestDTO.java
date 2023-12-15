@@ -1,9 +1,14 @@
 package umc.study.web.dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class MissionRequestDTO {
 
@@ -17,5 +22,27 @@ public class MissionRequestDTO {
         Date deadline;
         @NotNull
         String missionSpec;
+    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionPreViewListDTO{
+        List<MissionResponseDTO.MissionResultDTO> missionList;
+        Integer listSize;
+        Integer totalPage;
+        Long totalElements;
+        Boolean isFirst;
+        Boolean isLast;
+    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionPreViewDTO{
+        String ownerNickname;
+        Float score;
+        String body;
+        LocalDate createdAt;
     }
 }
