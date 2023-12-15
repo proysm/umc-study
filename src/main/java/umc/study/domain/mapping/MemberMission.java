@@ -1,6 +1,6 @@
 package umc.study.domain.mapping;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import umc.study.domain.Member;
 import umc.study.domain.Mission;

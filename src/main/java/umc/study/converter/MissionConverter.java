@@ -1,6 +1,6 @@
 package umc.study.converter;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import umc.study.domain.Mission;
 import umc.study.domain.Review;
 import umc.study.web.dto.MissionRequestDTO;

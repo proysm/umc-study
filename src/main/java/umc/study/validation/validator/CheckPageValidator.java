@@ -1,7 +1,7 @@
 package umc.study.validation.validator;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Check;
 import org.springframework.stereotype.Component;

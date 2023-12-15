@@ -1,7 +1,7 @@
 package umc.study.web.controller;
 
 import com.google.protobuf.Api;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

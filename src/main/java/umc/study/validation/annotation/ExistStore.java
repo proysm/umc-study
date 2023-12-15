@@ -1,7 +1,7 @@
 package umc.study.validation.annotation;
 
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import umc.study.validation.validator.StoreExistValidator;
 
 import java.lang.annotation.*;
